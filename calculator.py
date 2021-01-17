@@ -1,11 +1,12 @@
+#!/usr/bin/python3
 from tkinter import Tk, Label, Button, Entry, END
 
 
 window = Tk()
-window.title("Simple Calculator")
+window.title("Simple Calculator by Hasban")
+window.configure(background = "gray")
 
-
-e = Entry(window, width=35,)
+e = Entry(window, width=35, font=("Arial", 15))
 e.grid(row=0, column=0, columnspan=5, padx=10, pady=10)
 
 
@@ -26,9 +27,14 @@ def button_operation(operation):
 
 def button_equal():
     operasi = e.get()
-    operasi.replace(" ", "")
-    hasil = eval(operasi)
-    e.insert(END, f" = {hasil}")
+    try:
+        operasi.replace(" ", "")
+        hasil = eval(operasi)
+        e.insert(END, f" = {hasil}")
+    except:
+        e.delete(0, END)
+        e.insert(END, "~~~ERROR~~~")
+        
 
 # membuat tombol
 tombol1 = Button(window, text="1", padx=40, pady=20, command=lambda: button_click(1))
@@ -42,15 +48,15 @@ tombol8 = Button(window, text="8", padx=40, pady=20, command=lambda: button_clic
 tombol9 = Button(window, text="9", padx=40, pady=20, command=lambda: button_click(9))
 tombol0 = Button(window, text="0", padx=90, pady=20, command=lambda: button_click(0))
 
-tombol_tambah = Button(window, text="+", padx=40, pady=10, command=lambda: button_operation("+"))
-tombol_kurang = Button(window, text="-", padx=40, pady=10, command=lambda: button_operation("-"))
+tombol_tambah = Button(window, text="+", padx=39, pady=10, command=lambda: button_operation("+"))
+tombol_kurang = Button(window, text="-", padx=42, pady=10, command=lambda: button_operation("-"))
 tombol_kali = Button(window, text="x", padx=40, pady=10, command=lambda: button_operation("*"))
-tombol_bagi = Button(window, text=":", padx=40, pady=10, command=lambda: button_operation("/"))
-tombol_hapus = Button(window, text="C", padx=40, pady=20, command=button_c)
-tombol_clear = Button(window, text="AC", padx=40, pady=20, command=button_clear)
+tombol_bagi = Button(window, text=":", padx=43, pady=10, command=lambda: button_operation("/"))
+tombol_hapus = Button(window, text="C", padx=41, pady=20, command=button_c)
+tombol_clear = Button(window, text="AC", padx=37, pady=20, command=button_clear)
 tombol_sama_dengan = Button(window, text="=", padx=40, pady=50, command=button_equal)
 
-tombol_koma = Button(window, text=",", padx=40, pady=20, command=lambda: button_click("."))
+tombol_koma = Button(window, text=",", padx=43, pady=20, command=lambda: button_click("."))
 
 # meletakkan tombol
 tombol1.grid(row=4, column=0)
