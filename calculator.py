@@ -15,7 +15,11 @@ def tombol_klik(angka):
 
 def tombol_del():
     a = e.get()
-    b = a[:-1]
+    if " " in a[-2]:
+	    b = a[:-2]
+    else:
+        b = a[:-1]
+        
     e.delete(0, END)
     e.insert(END, b)
 
