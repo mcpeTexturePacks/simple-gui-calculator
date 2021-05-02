@@ -22,8 +22,8 @@ def tombol_del():
             b = a[:-1]
     except:
 	b = a[:-1]
-    e.delete(0, END)
-    e.insert(END, b)
+        e.delete(0, END)
+        e.insert(END, b)
 
 def tombol_DA():
     e.delete(0, END)
